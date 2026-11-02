@@ -125,8 +125,8 @@ export const PROFILE_DATA = {
       highlight: "Bắn vài trận game hoặc ra ngoài vận động để reset não",
       details: [
         "Game yêu thích: Valorant, Counter strike 2, Arena Breakout Infinities, League Of Legend",
-        "Mục đích: Không cày nghiện, chỉ chơi lúc não bị tràn bộ nhớ cần 'free memory'",
-        "Thể thao: Thích chạy xe dạo phố đêm lộng gió hoặc chơi bóng rổ để giãn gân cốt"
+        "Mục đích: Không cày nghiện, chỉ chơi để xã stress thôi",
+        "Thể thao: Thích chạy xe dạo phố đêm lộng gió hoặc chơi bóng chuyền với mấy thk bạn"
       ]
     }
   ],
