@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { ExternalLink, BookOpen, ArrowUpRight, Box, CheckCircle2, Search, X } from 'lucide-react';
-import ProjectPortal from './visual/ProjectPortal';
 
 export default function ProjectsSection({ projects, categories, onOpenDetail, onOpenJournal }) {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -142,13 +141,6 @@ export default function ProjectsSection({ projects, categories, onOpenDetail, on
                     <p className="font-sans text-sm text-[#AAA7B2] leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
-
-                    {/* Companion 3D Visual Accent for Project 1 */}
-                    {idx === 1 && (
-                      <div className="py-2">
-                        <ProjectPortal className="w-full h-[180px]" />
-                      </div>
-                    )}
 
                     {/* Technology Tags */}
                     <div className="flex flex-wrap gap-1.5 pt-2">

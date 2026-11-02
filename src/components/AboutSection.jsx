@@ -1,6 +1,5 @@
-import React from 'react';
-import { User, Quote, CheckCircle2, Compass, Sparkles } from 'lucide-react';
-import NeuralCore from './visual/NeuralCore';
+﻿import React from 'react';
+import { User, Quote, CheckCircle2, Compass, Sparkles, Terminal, Cpu, Database, Binary } from 'lucide-react';
 
 export default function AboutSection({ personal, facts, philosophy }) {
   return (
@@ -83,10 +82,45 @@ export default function AboutSection({ personal, facts, philosophy }) {
             </div>
           </div>
 
-          {/* Right Column: 3D Sculpture & Quick Facts (5 cols) */}
+          {/* Right Column: Workstation & Verified Fact Matrix (5 cols) */}
           <div className="md:col-span-5 flex flex-col justify-between gap-6">
-            {/* 3D Minimal Sculpture */}
-            <NeuralCore className="w-full h-[280px] sm:h-[320px]" />
+            {/* Workstation & Engineering Discipline Bento Card */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark space-y-5 text-left">
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+                <div className="flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-[#9B5CFF]" />
+                  <span className="font-mono text-xs text-[#F5F4F8] font-bold uppercase tracking-wider">
+                    Workstation &amp; Rigour
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#121218] text-[#B994FF] border border-white/[0.06]">
+                  SPEC 01
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 font-mono text-xs">
+                <div className="p-3 rounded-xl bg-[#121218] border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] text-[#706D79] uppercase block">Compiler &amp; Standard</span>
+                  <span className="text-[#F5F4F8] font-semibold text-xs block">GCC 13 / C++20</span>
+                </div>
+                <div className="p-3 rounded-xl bg-[#121218] border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] text-[#706D79] uppercase block">Ops Constraint</span>
+                  <span className="text-[#B994FF] font-semibold text-xs block">&le; 10^8 ops/sec</span>
+                </div>
+                <div className="p-3 rounded-xl bg-[#121218] border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] text-[#706D79] uppercase block">Memory Discipline</span>
+                  <span className="text-[#F5F4F8] font-semibold text-xs block">Zero Leak / Valgrind</span>
+                </div>
+                <div className="p-3 rounded-xl bg-[#121218] border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] text-[#706D79] uppercase block">Testing Rigour</span>
+                  <span className="text-[#B994FF] font-semibold text-xs block">Corner Case Audited</span>
+                </div>
+              </div>
+
+              <p className="font-sans text-xs text-[#AAA7B2] leading-relaxed">
+                Mọi thuật toán đều được kiểm thử giới hạn thời gian (Stanford CS97SI), biên cực trị N=0, N=1, tràn số nguyên 64-bit và tối ưu bộ đệm fast I/O.
+              </p>
+            </div>
 
             {/* Compact Fact Matrix */}
             <div className="p-6 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark space-y-4 text-left">
@@ -101,12 +135,12 @@ export default function AboutSection({ personal, facts, philosophy }) {
                   <span className="text-[#F5F4F8] font-semibold">C++20 &amp; Python 3</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-white/[0.04]">
-                  <span className="text-[#706D79]">Graphics Engine:</span>
-                  <span className="text-[#F5F4F8] font-semibold">Three.js WebGL</span>
+                  <span className="text-[#706D79]">Architecture:</span>
+                  <span className="text-[#F5F4F8] font-semibold">Clean Architecture &amp; ADR</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-white/[0.04]">
                   <span className="text-[#706D79]">Methodology:</span>
-                  <span className="text-[#F5F4F8] font-semibold">CS97SI &amp; Clean Code</span>
+                  <span className="text-[#F5F4F8] font-semibold">Stanford CS97SI</span>
                 </div>
                 <div className="flex justify-between items-center py-1">
                   <span className="text-[#706D79]">Current Status:</span>

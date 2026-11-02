@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Mail, Send, Check, Copy } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
-import CrystallineClosing from './visual/CrystallineClosing';
 
 export default function ContactSection({ personal }) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -111,8 +110,26 @@ export default function ContactSection({ personal }) {
               </div>
             </div>
 
-            {/* 3D Epilogue Monolith */}
-            <CrystallineClosing className="w-full h-[220px] sm:h-[260px]" />
+            {/* Availability & Protocol Matrix Bento Card */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark space-y-4 text-left">
+              <span className="font-mono text-xs text-[#706D79] uppercase tracking-wider block border-b border-white/[0.06] pb-2">
+                Availability &amp; Protocol
+              </span>
+              <div className="space-y-3 font-mono text-xs">
+                <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                  <span className="text-[#AAA7B2]">Phản hồi trung bình:</span>
+                  <span className="text-[#F5F4F8] font-semibold">&lt; 24 giờ làm việc</span>
+                </div>
+                <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                  <span className="text-[#AAA7B2]">Múi giờ hoạt động:</span>
+                  <span className="text-[#F5F4F8] font-semibold">UTC+7 (Indochina)</span>
+                </div>
+                <div className="flex items-center justify-between py-1">
+                  <span className="text-[#AAA7B2]">Định dạng trao đổi:</span>
+                  <span className="text-[#B994FF] font-semibold">Email / GitHub Issues</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Contact Form (7 cols) */}

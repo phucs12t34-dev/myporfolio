@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowUp } from 'lucide-react';
 
 export default function Footer({ personal }) {
@@ -29,7 +29,7 @@ export default function Footer({ personal }) {
 
           {/* Center Info */}
           <div className="text-xs font-mono text-[#706D79] text-center">
-            Deep Black Futuristic Bento &times; Dark Terminal &times; Three.js Web3D.
+            Deep Black Futuristic Bento &times; Dark Terminal &times; Engineering Journal.
           </div>
 
           {/* Back to Top Button */}
@@ -49,7 +49,7 @@ export default function Footer({ personal }) {
             &copy; {currentYear} {personal?.name && !personal.name.includes('[ADD') ? personal.name : "Developer"}. All rights reserved.
           </div>
           <div>
-            Space Grotesk &bull; C++20 DSA &bull; Three.js Simulation Studio
+            Space Grotesk &bull; C++20 DSA &bull; Engineering Systems
           </div>
         </div>
       </div>

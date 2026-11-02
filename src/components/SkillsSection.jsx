@@ -1,6 +1,5 @@
-import React from 'react';
-import { Code2, Cpu, Wrench, Layers, Terminal, Sparkles, Binary } from 'lucide-react';
-import AlgorithmicStructure from './visual/AlgorithmicStructure';
+﻿import React from 'react';
+import { Code2, Cpu, Wrench, Layers, Terminal, Sparkles, Binary, Gauge, Zap } from 'lucide-react';
 
 export default function SkillsSection({ skills }) {
   const categories = [
@@ -9,17 +8,17 @@ export default function SkillsSection({ skills }) {
       desc: "Nền tảng tư duy cấu trúc, giải thuật tối ưu và lập trình thi đấu (Competitive Programming).",
       items: [
         { name: "C++20 / STL", category: "Core Language", detail: "Segment Tree, Fenwick, DSU, Dijkstra, Dinic Max Flow, CS97SI constraints" },
-        { name: "Python 3.12", category: "Scripting & AI", detail: "Data analysis, NumPy, OpenCV, simulation automation" },
+        { name: "Python 3.12", category: "Scripting & AI", detail: "Data analysis, NumPy, OpenCV, automation scripts" },
         { name: "C / Embedded", category: "Systems", detail: "Memory management, pointers, registers, low-level I/O" },
       ]
     },
     {
-      title: "02 / Spatial & Web Computing",
-      desc: "Kiến trúc giao diện hiện đại và đồ họa không gian ba chiều thời gian thực.",
+      title: "02 / Systems, Fullstack & Interface",
+      desc: "Kiến trúc hệ thống, giao diện hiện đại và các luồng tích hợp dữ liệu thời gian thực.",
       items: [
-        { name: "Three.js / WebGL", category: "Graphics", detail: "PBR shaders, procedural geometry, Web3D integration patterns" },
-        { name: "React 18 & Vite", category: "Frontend", detail: "Component lifecycles, state hooks, reactive architecture" },
-        { name: "Tailwind CSS", category: "Styling", detail: "Futuristic dark aesthetic, typography scales, responsive bento grids" },
+        { name: "React 18 & Vite", category: "Frontend Core", detail: "Component lifecycles, state management, modular architecture" },
+        { name: "Tailwind CSS", category: "Design System", detail: "Futuristic dark aesthetic, typography scales, responsive bento grids" },
+        { name: "Node.js / REST APIs", category: "Networking", detail: "Asynchronous I/O, IPC protocols, real-time telemetry streaming" },
       ]
     },
     {
@@ -56,7 +55,7 @@ export default function SkillsSection({ skills }) {
           </div>
         </div>
 
-        {/* 3-Column Grid + 3D Visual Object */}
+        {/* 3-Column Grid + Complexity Benchmark Matrix */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main 3 Categories (8 cols) */}
           <div className="lg:col-span-8 space-y-8">
@@ -96,10 +95,43 @@ export default function SkillsSection({ skills }) {
             ))}
           </div>
 
-          {/* Right Column: Algorithmic Sculpture & Technical Summary (4 cols) */}
+          {/* Right Column: Algorithmic Complexity Card & Standard (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <AlgorithmicStructure className="w-full h-[280px] sm:h-[320px]" />
+            {/* Complexity Benchmark Card */}
+            <div className="p-6 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark space-y-5 text-left">
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+                <div className="flex items-center gap-2">
+                  <Gauge className="w-4 h-4 text-[#9B5CFF]" />
+                  <span className="font-mono text-xs text-[#F5F4F8] font-bold uppercase tracking-wider">
+                    Complexity Index
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#121218] text-[#B994FF] border border-white/[0.06]">
+                  BENCHMARK
+                </span>
+              </div>
 
+              <div className="space-y-3 font-mono text-xs">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-[#121218] border border-white/[0.04]">
+                  <span className="text-[#AAA7B2]">Segment Tree / BIT:</span>
+                  <span className="text-[#B994FF] font-semibold">O(log N) Query</span>
+                </div>
+                <div className="flex justify-between items-center p-2 rounded-lg bg-[#121218] border border-white/[0.04]">
+                  <span className="text-[#AAA7B2]">Dijkstra + Priority Queue:</span>
+                  <span className="text-[#B994FF] font-semibold">O(E log V)</span>
+                </div>
+                <div className="flex justify-between items-center p-2 rounded-lg bg-[#121218] border border-white/[0.04]">
+                  <span className="text-[#AAA7B2]">Disjoint Set Union (DSU):</span>
+                  <span className="text-[#B994FF] font-semibold">O(α(N)) ≈ O(1)</span>
+                </div>
+                <div className="flex justify-between items-center p-2 rounded-lg bg-[#121218] border border-white/[0.04]">
+                  <span className="text-[#AAA7B2]">Fast I/O Buffer:</span>
+                  <span className="text-[#B994FF] font-semibold">&gt; 3x Speedup</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Standard Checklist */}
             <div className="p-6 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark space-y-4 text-left">
               <span className="font-mono text-xs text-[#AAA7B2] uppercase tracking-wider block border-b border-white/[0.06] pb-2">
                 Engineering Standard

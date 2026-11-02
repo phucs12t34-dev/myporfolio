@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Web3DBackground from './components/Web3DBackground';
 import HeroSection from './components/HeroSection';
@@ -19,16 +19,16 @@ import { ALL_PROJECTS, PROJECT_CATEGORIES } from './data/projects';
 
 export default function App() {
   const [personal] = useState(PORTFOLIO_DATA.personal);
-  const [selectedDetail, setSelectedDetail] = useState(null); // { project, initialTab }
+  const [selectedDetail, setSelectedDetail] = useState(null);
   const [selectedJournalProject, setSelectedJournalProject] = useState(null);
 
-  const handleOpenDetail = (project, initialTab = 'details') => {
-    setSelectedDetail({ project, initialTab });
+  const handleOpenDetail = (project) => {
+    setSelectedDetail({ project });
   };
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-[#F5F4F8] selection:bg-[#9B5CFF]/30 selection:text-[#B994FF]">
-      {/* Pattern 1: Three.js Space Particle Background */}
+      {/* Cybernetic Minimal Dark Background (Pure CSS & Dot Grid) */}
       <Web3DBackground />
 
       {/* Main UI Layer Overlay */}
@@ -95,11 +95,10 @@ export default function App() {
         <Footer personal={personal} />
       </div>
 
-      {/* Project Detail Modal with Architecture & 3D Simulation Twin Viewer */}
+      {/* Project Detail Modal with Architecture & Specs */}
       {selectedDetail && (
         <ProjectModal
           project={selectedDetail.project}
-          initialTab={selectedDetail.initialTab}
           onClose={() => setSelectedDetail(null)}
           onOpenJournal={(proj) => {
             setSelectedDetail(null);

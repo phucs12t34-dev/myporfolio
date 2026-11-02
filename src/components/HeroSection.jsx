@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import { ArrowDown, ChevronRight, Terminal as TerminalIcon, Sparkles, Box, FileText, MapPin } from 'lucide-react';
+﻿import React from 'react';
+import { ArrowDown, ChevronRight, Terminal as TerminalIcon, Sparkles, FileText, MapPin } from 'lucide-react';
 import HeroTerminal from './HeroTerminal';
-import EditorialSculpture from './visual/EditorialSculpture';
 
 export default function HeroSection({ personal, heroTerminal }) {
-  const [activeVisual, setActiveVisual] = useState('terminal'); // 'terminal' | 'sculpture'
-
   return (
     <section id="hero" className="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
@@ -41,7 +38,7 @@ export default function HeroSection({ personal, heroTerminal }) {
             {/* Supporting Bio */}
             <p className="font-sans text-base sm:text-lg text-[#AAA7B2] max-w-2xl leading-relaxed">
               {personal?.shortBio || (
-                "Tôi là một lập trình viên học tập và phát triển phần mềm với định hướng chuyên sâu vào cấu trúc dữ liệu, giải thuật tối ưu (DSA C++ / Competitive Programming), đồ họa không gian Web3D và mô phỏng số."
+                "Tôi là một lập trình viên học tập và phát triển phần mềm với định hướng chuyên sâu vào cấu trúc dữ liệu, giải thuật tối ưu (DSA C++ / Competitive Programming), kiến trúc phần mềm và các hệ thống nhúng thông minh."
               )}
             </p>
 
@@ -51,10 +48,10 @@ export default function HeroSection({ personal, heroTerminal }) {
                 #01 C++20 DSA / CP
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-[#121218] border border-white/[0.08] text-[#B994FF] hover:border-[#9B5CFF]/40 transition-colors">
-                #02 Robotics Digital Twin
+                #02 Robotics &amp; Embedded
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-[#121218] border border-white/[0.08] text-[#AAA7B2] hover:border-[#9B5CFF]/40 hover:text-[#F5F4F8] transition-colors">
-                #03 Three.js Web3D
+                #03 Software Architecture
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-[#121218] border border-white/[0.08] text-[#706D79] hover:border-[#9B5CFF]/40 hover:text-[#AAA7B2] transition-colors">
                 #04 Engineering Journal
@@ -101,63 +98,37 @@ export default function HeroSection({ personal, heroTerminal }) {
             </div>
           </div>
 
-          {/* Right Column: Visual Centerpiece (5 cols) */}
+          {/* Right Column: Terminal Centerpiece (5 cols) */}
           <div className="lg:col-span-5 w-full flex flex-col items-center">
-            {/* Visual View Switcher */}
-            <div className="w-full max-w-xl mb-3 flex items-center justify-between p-1 rounded-xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark">
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => setActiveVisual('terminal')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
-                    activeVisual === 'terminal'
-                      ? 'bg-[#9B5CFF] text-white shadow-glow-purple font-semibold'
-                      : 'text-[#AAA7B2] hover:text-[#F5F4F8]'
-                  }`}
-                >
-                  <TerminalIcon className="w-3.5 h-3.5 text-white" />
-                  <span>Terminal (~/workspace)</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveVisual('sculpture')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
-                    activeVisual === 'sculpture'
-                      ? 'bg-[#9B5CFF] text-white shadow-glow-purple font-semibold'
-                      : 'text-[#AAA7B2] hover:text-[#F5F4F8]'
-                  }`}
-                >
-                  <Box className="w-3.5 h-3.5 text-white" />
-                  <span>3D Digital Art (FIG. 01)</span>
-                </button>
+            {/* Terminal Top Info Header */}
+            <div className="w-full max-w-xl mb-3 flex items-center justify-between px-3 py-2 rounded-xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark">
+              <div className="flex items-center gap-2 font-mono text-xs text-[#AAA7B2]">
+                <TerminalIcon className="w-3.5 h-3.5 text-[#9B5CFF]" />
+                <span className="text-[#F5F4F8] font-semibold">Interactive Shell</span>
+                <span className="text-[#3A3845]">/</span>
+                <span className="text-[#706D79] text-[11px]">zsh - 80x24</span>
               </div>
-
-              <span className="text-[10px] font-mono text-[#706D79] pr-2 hidden sm:block">
-                {activeVisual === 'terminal' ? 'macOS CLI' : 'Web3D 60FPS'}
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#121218] text-[#B994FF] border border-white/[0.06]">
+                LIVE CLI
               </span>
             </div>
 
-            {/* Main Centerpiece Component */}
+            {/* Main Terminal Window */}
             <div className="w-full max-w-xl">
-              {activeVisual === 'terminal' ? (
-                <HeroTerminal terminalData={heroTerminal} />
-              ) : (
-                <EditorialSculpture className="w-full h-[460px] sm:h-[500px]" />
-              )}
+              <HeroTerminal terminalData={heroTerminal} />
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="mt-14 sm:mt-18 flex justify-center">
+        <div className="pt-16 flex justify-center">
           <a
             href="#about"
-            className="flex flex-col items-center gap-2 text-[#706D79] hover:text-[#9B5CFF] transition-colors group"
-            aria-label="Cuộn xuống để xem thêm"
+            className="flex flex-col items-center gap-2 text-[#706D79] hover:text-[#B994FF] transition-colors"
+            aria-label="Cuộn xuống phần Giới thiệu"
           >
-            <span className="font-mono text-[11px] tracking-wider uppercase group-hover:text-[#F5F4F8]">
-              Cuộn để khám phá
-            </span>
-            <ArrowDown className="w-4 h-4 animate-bounce text-[#9B5CFF]" />
+            <span className="text-[10px] font-mono tracking-widest uppercase">Cuộn để khám phá</span>
+            <ArrowDown className="w-4 h-4 animate-bounce" />
           </a>
         </div>
       </div>
