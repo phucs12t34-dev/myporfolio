@@ -1,119 +1,57 @@
-﻿import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Web3DBackground from './components/Web3DBackground';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import SkillsSection from './components/SkillsSection';
-import ProjectsSection from './components/ProjectsSection';
-import CurrentlyLearningSection from './components/CurrentlyLearningSection';
-import AchievementsSection from './components/AchievementsSection';
-import CertificationsSection from './components/CertificationsSection';
-import EducationSection from './components/EducationSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
-import ProjectModal from './components/ProjectModal';
-import JournalModal from './components/JournalModal';
+import React from 'react';
+import CyberCityBackground from './components/CyberCityBackground';
+import CyberNavbar from './components/CyberNavbar';
+import StreetHeroSection from './components/StreetHeroSection';
+import AttitudeManifestoSection from './components/AttitudeManifestoSection';
+import HobbiesStreetCultureSection from './components/HobbiesStreetCultureSection';
+import CppArsenalSection from './components/CppArsenalSection';
+import StreetConnectSection from './components/StreetConnectSection';
+import CyberFooter from './components/CyberFooter';
 
-import { PORTFOLIO_DATA } from './data/portfolio';
-import { ALL_PROJECTS, PROJECT_CATEGORIES } from './data/projects';
+import { PROFILE_DATA } from './data/profile';
 
+/**
+ * CYBER STREET IDENTITY // MAIN APPLICATION
+ * A pure object-oriented, 0% 3D model, ultra-smooth,
+ * Hip-Hop & Street Cyberpunk personal portfolio for C++ DSA.
+ */
 export default function App() {
-  const [personal] = useState(PORTFOLIO_DATA.personal);
-  const [selectedDetail, setSelectedDetail] = useState(null);
-  const [selectedJournalProject, setSelectedJournalProject] = useState(null);
-
-  const handleOpenDetail = (project) => {
-    setSelectedDetail({ project });
-  };
+  const { identity, manifesto, hobbies, arsenal, socials } = PROFILE_DATA;
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-[#F5F4F8] selection:bg-[#9B5CFF]/30 selection:text-[#B994FF]">
-      {/* Cybernetic Minimal Dark Background (Pure CSS & Dot Grid) */}
-      <Web3DBackground />
+    <div id="top" className="relative min-h-screen bg-[#07080F] text-[#F1F5F9] selection:bg-[#00F0FF]/30 selection:text-[#00F0FF] overflow-x-hidden font-sans">
+      
+      {/* Cyberpunk City Skyline Environment (Vector & Pure CSS - Zero 3D Overhead) */}
+      <CyberCityBackground />
 
-      {/* Main UI Layer Overlay */}
+      {/* Main UI Layer */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Floating Futuristic Navbar */}
-        <Navbar personal={personal} />
+        
+        {/* Sticky Cyberpunk Header & Interactive Boombox Beat Player */}
+        <CyberNavbar identity={identity} />
 
         {/* Main Content Sections */}
         <main className="flex-1">
-          {/* Hero Section with Asymmetric Bento & Interactive macOS Terminal */}
-          <HeroSection
-            personal={personal}
-            heroTerminal={PORTFOLIO_DATA.heroTerminal}
-          />
+          {/* Hero Section: Photo Object with 'So stress' Badge, Graffiti Slogan, Spray Can */}
+          <StreetHeroSection identity={identity} />
 
-          {/* About Section */}
-          <AboutSection
-            personal={personal}
-            facts={PORTFOLIO_DATA.facts}
-            philosophy={PORTFOLIO_DATA.philosophy}
-          />
+          {/* Attitude & Manifesto: Why C++ & DSA, Raw Metal Mindset, Street Rules */}
+          <AttitudeManifestoSection manifesto={manifesto} identity={identity} />
 
-          {/* Skills & Technologies Section */}
-          <SkillsSection
-            skills={PORTFOLIO_DATA.skills}
-          />
+          {/* Hobbies & Street Lifestyle: Hip-hop, Streetwear, Night Owl, Mixtape Cassette */}
+          <HobbiesStreetCultureSection hobbies={hobbies} />
 
-          {/* Featured Projects with Bento Grid & Search Filter */}
-          <ProjectsSection
-            projects={ALL_PROJECTS}
-            categories={PROJECT_CATEGORIES}
-            onOpenDetail={handleOpenDetail}
-            onOpenJournal={(proj) => setSelectedJournalProject(proj)}
-          />
+          {/* C++ Algorithmic Arsenal: Segment Tree Lazy, DSU, Fast I/O, Code Snippet */}
+          <CppArsenalSection arsenal={arsenal} />
 
-          {/* Currently Learning Section */}
-          <CurrentlyLearningSection
-            items={PORTFOLIO_DATA.currentlyLearning}
-          />
-
-          {/* Achievements & Milestones Section */}
-          <AchievementsSection
-            achievements={PORTFOLIO_DATA.achievements}
-            placeholderText={PORTFOLIO_DATA.achievementsPlaceholder}
-          />
-
-          {/* Certifications Section */}
-          <CertificationsSection
-            certifications={PORTFOLIO_DATA.certifications}
-          />
-
-          {/* Education Section */}
-          <EducationSection
-            education={PORTFOLIO_DATA.education}
-          />
-
-          {/* Contact Section */}
-          <ContactSection
-            personal={personal}
-          />
+          {/* Street Drop / Connect & Social Links */}
+          <StreetConnectSection socials={socials} identity={identity} />
         </main>
 
-        {/* Futuristic Minimal Footer */}
-        <Footer personal={personal} />
+        {/* Street Footer with Caution Tape & Slogan */}
+        <CyberFooter identity={identity} />
       </div>
 
-      {/* Project Detail Modal with Architecture & Specs */}
-      {selectedDetail && (
-        <ProjectModal
-          project={selectedDetail.project}
-          onClose={() => setSelectedDetail(null)}
-          onOpenJournal={(proj) => {
-            setSelectedDetail(null);
-            setSelectedJournalProject(proj);
-          }}
-        />
-      )}
-
-      {/* Level 1 & Level 2 Two-Level Project Development Journal Modal */}
-      {selectedJournalProject && (
-        <JournalModal
-          project={selectedJournalProject}
-          onClose={() => setSelectedJournalProject(null)}
-        />
-      )}
     </div>
   );
 }
