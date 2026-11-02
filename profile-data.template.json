@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DeveloperPortfolioProfileData",
+  "description": "Structured template for genuine developer portfolio data integration.",
+  "personal": {
+    "fullName": "",
+    "name": "",
+    "initials": "DEV",
+    "role": "Student Developer",
+    "statusBadge": "ASPIRING SOFTWARE ENGINEER",
+    "location": "Vietnam",
+    "language": "en",
+    "tagline": "Designing and building things that make technology feel human.",
+    "shortBio": "I am an aspiring developer focused on data structures, algorithmic optimization (C++ DSA), spatial 3D computing, and system architecture.",
+    "longBio": "I study and build software with a focus on disciplined computer science foundations, rigorous algorithm design, real-time 3D graphics, and tactile digital craftsmanship.",
+    "cvAvailable": false,
+    "cvUrl": "",
+    "socialLinks": {
+      "email": "",
+      "github": "",
+      "linkedin": "",
+      "website": ""
+    }
+  },
+  "philosophy": {
+    "quote": "Writing code is not merely instructing machines, but communicating intent with human clarity.",
+    "author": "Engineering Philosophy",
+    "focus": "Algorithmic rigour combined with tactile digital craft"
+  },
+  "education": [
+    {
+      "institution": "School / University Name",
+      "program": "Computer Science / Informatics Focus",
+      "period": "2023 — Present",
+      "highlights": [
+        "Competitive programming team and algorithmic problem solving",
+        "Data structures and discrete mathematics study",
+        "Computer architecture and systems exploration"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      {
+        "name": "C++20",
+        "category": "Core Language",
+        "level": "Practicing",
+        "detail": "Competitive programming, STL algorithms, custom data structures, Stanford CS97SI constraints"
+      },
+      {
+        "name": "Python 3.12",
+        "category": "Scripting & Automation",
+        "level": "Learning",
+        "detail": "Data analysis, computer vision scripts, automation pipelines"
+      }
+    ],
+    "webAndGraphics": [
+      {
+        "name": "Three.js / WebGL",
+        "category": "3D Graphics",
+        "level": "Practicing",
+        "detail": "PBR shaders, procedural geometry, Web3D integration patterns"
+      },
+      {
+        "name": "React 18 & Vite",
+        "category": "Interface Architecture",
+        "level": "Practicing",
+        "detail": "Modern component hierarchy, state management, reactive interfaces"
+      },
+      {
+        "name": "Tailwind CSS",
+        "category": "Design System",
+        "level": "Practicing",
+        "detail": "Editorial typography scales, Swiss modernist layouts, responsive breakpoints"
+      }
+    ],
+    "toolsAndEnvironment": [
+      {
+        "name": "Git & GitHub",
+        "category": "Version Control",
+        "level": "Practicing",
+        "detail": "Branching, PR reviews, documentation tracking"
+      },
+      {
+        "name": "Linux / POSIX",
+        "category": "Operating System",
+        "level": "Practicing",
+        "detail": "Terminal commands, GCC/Clang tooling, CMake build configurations"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "project-one-id",
+      "title": "Project Title",
+      "subtitle": "Short Technical Tagline",
+      "category": "C++ DSA / Web3D / Robotics",
+      "status": "In Development",
+      "description": "Clear 2-3 sentence overview of what the project does and why it was built.",
+      "problem": "Specific computational or practical problem being addressed.",
+      "technologies": ["C++20", "Three.js", "React"],
+      "features": [
+        "Feature 1 with tangible technical detail",
+        "Feature 2 with tangible technical detail"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "journal": []
+    }
+  ],
+  "achievements": [],
+  "certifications": [],
+  "currentlyLearning": [
+    {
+      "topic": "Advanced Graph Algorithms & Max Flow",
+      "focus": "Dinic Algorithm, Push-Relabel, Bipartite Matching",
+      "status": "Practicing",
+      "description": "Studying network flow constraints and applying them to competitive programming problem sets."
+    },
+    {
+      "topic": "WebGL PBR Shaders & Optical Transmission",
+      "focus": "Roughness, Metalness, IOR Refraction",
+      "status": "Learning",
+      "description": "Understanding the mathematics behind light interaction and real-time material rendering in browser viewports."
+    }
+  ],
+  "visualAssets": {
+    "profilePhoto": null,
+    "projectScreenshots": [],
+    "certificateImages": []
+  }
+}

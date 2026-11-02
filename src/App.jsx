@@ -1,0 +1,120 @@
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Web3DBackground from './components/Web3DBackground';
+import HeroSection from './components/HeroSection';
+import AboutSection from './components/AboutSection';
+import SkillsSection from './components/SkillsSection';
+import ProjectsSection from './components/ProjectsSection';
+import CurrentlyLearningSection from './components/CurrentlyLearningSection';
+import AchievementsSection from './components/AchievementsSection';
+import CertificationsSection from './components/CertificationsSection';
+import EducationSection from './components/EducationSection';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import ProjectModal from './components/ProjectModal';
+import JournalModal from './components/JournalModal';
+
+import { PORTFOLIO_DATA } from './data/portfolio';
+import { ALL_PROJECTS, PROJECT_CATEGORIES } from './data/projects';
+
+export default function App() {
+  const [personal] = useState(PORTFOLIO_DATA.personal);
+  const [selectedDetail, setSelectedDetail] = useState(null); // { project, initialTab }
+  const [selectedJournalProject, setSelectedJournalProject] = useState(null);
+
+  const handleOpenDetail = (project, initialTab = 'details') => {
+    setSelectedDetail({ project, initialTab });
+  };
+
+  return (
+    <div className="relative min-h-screen bg-[#F7F5F0] text-[#171717] selection:bg-[#304FFE]/15 selection:text-[#304FFE]">
+      {/* Pattern 1: Three.js Editorial Dust Background */}
+      <Web3DBackground />
+
+      {/* Main UI Layer Overlay */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* Modernist Editorial Navbar */}
+        <Navbar personal={personal} />
+
+        {/* Main Content Sections */}
+        <main className="flex-1">
+          {/* Hero Section with Signature 3D Sculpture & Interactive Terminal */}
+          <HeroSection
+            personal={personal}
+            heroTerminal={PORTFOLIO_DATA.heroTerminal}
+          />
+
+          {/* About Section */}
+          <AboutSection
+            personal={personal}
+            facts={PORTFOLIO_DATA.facts}
+            philosophy={PORTFOLIO_DATA.philosophy}
+          />
+
+          {/* Skills & Technologies Section */}
+          <SkillsSection
+            skills={PORTFOLIO_DATA.skills}
+          />
+
+          {/* Featured Projects with Bento Grid */}
+          <ProjectsSection
+            projects={ALL_PROJECTS}
+            categories={PROJECT_CATEGORIES}
+            onOpenDetail={handleOpenDetail}
+            onOpenJournal={(proj) => setSelectedJournalProject(proj)}
+          />
+
+          {/* Currently Learning Section */}
+          <CurrentlyLearningSection
+            items={PORTFOLIO_DATA.currentlyLearning}
+          />
+
+          {/* Achievements & Milestones Section */}
+          <AchievementsSection
+            achievements={PORTFOLIO_DATA.achievements}
+            placeholderText={PORTFOLIO_DATA.achievementsPlaceholder}
+          />
+
+          {/* Certifications Section */}
+          <CertificationsSection
+            certifications={PORTFOLIO_DATA.certifications}
+          />
+
+          {/* Education Section */}
+          <EducationSection
+            education={PORTFOLIO_DATA.education}
+          />
+
+          {/* Contact Section */}
+          <ContactSection
+            personal={personal}
+          />
+        </main>
+
+        {/* Minimal Swiss Modernist Footer */}
+        <Footer personal={personal} />
+      </div>
+
+      {/* Project Detail Modal with Architecture & 3D Digital Twin Viewer */}
+      {selectedDetail && (
+        <ProjectModal
+          project={selectedDetail.project}
+          initialTab={selectedDetail.initialTab}
+          onClose={() => setSelectedDetail(null)}
+          onOpenJournal={(proj) => {
+            setSelectedDetail(null);
+            setSelectedJournalProject(proj);
+          }}
+        />
+      )}
+
+      {/* Level 1 Public Project Development Journal Modal */}
+      {selectedJournalProject && (
+        <JournalModal
+          project={selectedJournalProject}
+          onClose={() => setSelectedJournalProject(null)}
+        />
+      )}
+    </div>
+  );
+}
