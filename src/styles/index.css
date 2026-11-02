@@ -4,131 +4,112 @@
 
 @layer base {
   :root {
-    --bg-editorial: #F7F5F0;
-    --bg-sub: #F0EEE8;
-    --bg-card: #FFFFFF;
-    --text-primary: #171717;
-    --text-secondary: #66645F;
-    --text-muted: #8E8B83;
-    --border-editorial: #D8D5CD;
-    --border-subtle: #E7E4DC;
-    --accent-cobalt: #304FFE;
-    --accent-cobalt-hover: #1E40AF;
-    --accent-orange: #E85D3F;
-    --accent-yellow: #E8C96B;
+    --bg-deep: #050505;
+    --bg-sub: #09090C;
+    --bg-card: #0D0D11;
+    --bg-elevated: #121218;
+    --text-primary: #F4F1FA;
+    --text-secondary: #A6A2AF;
+    --text-muted: #686571;
+    --accent-purple: #9B5CFF;
+    --accent-hover: #B994FF;
+    --border-hairline: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(155, 92, 255, 0.35);
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: light;
-    background-color: #F7F5F0;
+    color-scheme: dark;
+    background-color: #050505;
   }
 
   body {
-    background-color: #F7F5F0;
-    color: #171717;
+    background-color: #050505;
+    color: #F4F1FA;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 
-  /* Editorial Headings with Serif Pairing */
-  h1, h2, h3, .font-editorial {
-    font-family: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-  }
-
-  /* Minimalist Editorial Scrollbar */
+  /* Custom Sleek Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #F0EEE8;
+    background: #09090C;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #D8D5CD;
+    background: #272732;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #304FFE;
+    background: #9B5CFF;
   }
 }
 
 @layer components {
-  /* Crisp Editorial Paper Card */
-  .editorial-card {
-    background: #FFFFFF;
-    border: 1px solid #D8D5CD;
-    box-shadow: 0 1px 3px 0 rgba(23, 23, 23, 0.03), 0 8px 24px -4px rgba(23, 23, 23, 0.04);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Studio Quality Glass Surface */
+  .glass-card {
+    background: #0D0D11;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .editorial-card:hover {
-    border-color: #171717;
-    box-shadow: 0 4px 12px -2px rgba(23, 23, 23, 0.06), 0 14px 32px -4px rgba(23, 23, 23, 0.06);
+  .glass-card:hover {
+    border-color: rgba(155, 92, 255, 0.32);
+    box-shadow: 0 12px 36px -4px rgba(155, 92, 255, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
   }
 
-  /* Editorial Section Index Stamp */
-  .editorial-stamp {
+  /* Bento Spotlight Card */
+  .spotlight-card {
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(155, 92, 255, 0.09) 0%, rgba(13, 13, 17, 0.95) 75%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .spotlight-card:hover {
+    border-color: rgba(155, 92, 255, 0.38);
+    box-shadow: 0 14px 40px -10px rgba(155, 92, 255, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  }
+
+  /* Badge Purple Glow */
+  .badge-purple {
+    background: rgba(155, 92, 255, 0.1);
+    border: 1px solid rgba(155, 92, 255, 0.28);
+    color: #B994FF;
+  }
+
+  /* Monospace Section Chip */
+  .section-chip {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #66645F;
+    color: #B994FF;
   }
 
-  .editorial-stamp::before {
+  .section-chip::before {
     content: '';
     display: inline-block;
     width: 1.25rem;
     height: 1px;
-    background-color: #171717;
+    background-color: #9B5CFF;
   }
 
-  /* Monospace Editorial Badge */
-  .badge-editorial {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.2rem 0.55rem;
-    border-radius: 9999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    background: #F0EEE8;
-    color: #171717;
-    border: 1px solid #D8D5CD;
-  }
-
-  /* Cobalt Accent Pill */
-  .badge-cobalt {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.2rem 0.55rem;
-    border-radius: 9999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    background: rgba(48, 79, 254, 0.08);
-    color: #304FFE;
-    border: 1px solid rgba(48, 79, 254, 0.25);
-  }
-
-  /* Editorial Monospace Terminal Cursor */
+  /* Terminal Cursor with Lavender Glow */
   .terminal-cursor {
     display: inline-block;
-    width: 7px;
-    height: 14px;
-    background-color: #304FFE;
+    width: 8px;
+    height: 16px;
+    background-color: #B994FF;
     margin-left: 3px;
     vertical-align: middle;
     animation: blink 1s step-end infinite;
@@ -140,7 +121,7 @@
   50% { opacity: 0; }
 }
 
-/* Reduced Motion Accessibility */
+/* Reduced Motion Preference Accessibility */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

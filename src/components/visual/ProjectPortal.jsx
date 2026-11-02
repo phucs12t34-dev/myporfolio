@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 /**
- * Editorial Project Portal - Minimalist Spatial Frame
+ * Project Portal - Concentric Holographic Frames
  * Concept: "Gateway to engineering artifacts & real-time simulations"
- * - Concentric beveled rectangular frames + Cobalt Core Jewel
- * - Realistic soft ground shadow for spatial grounding
+ * - Concentric wireframe rectangular frames + Purple/Cobalt Diamond Core
+ * - Dark ambient grounding
  * - Complies with web3d-integration-patterns (DPR clamp <= 1.75, Visibility API, thorough disposal)
  */
 export default function ProjectPortal({ className = "w-full h-[220px] sm:h-[260px]" }) {
@@ -39,14 +39,14 @@ export default function ProjectPortal({ className = "w-full h-[220px] sm:h-[260p
       return item;
     };
 
-    const ambientLight = new THREE.AmbientLight(0xf0eee8, 1.6);
+    const ambientLight = new THREE.AmbientLight(0x181824, 2.5);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfffaed, 2.0);
+    const keyLight = new THREE.DirectionalLight(0xB994FF, 3.0);
     keyLight.position.set(3, 5, 4);
     scene.add(keyLight);
 
-    const cobaltLight = new THREE.DirectionalLight(0x304FFE, 1.6);
+    const cobaltLight = new THREE.DirectionalLight(0x4169FF, 2.2);
     cobaltLight.position.set(-3, -1, -2);
     scene.add(cobaltLight);
 
@@ -59,15 +59,15 @@ export default function ProjectPortal({ className = "w-full h-[220px] sm:h-[260p
     shadowCanvas.height = 64;
     const sCtx = shadowCanvas.getContext('2d');
     const sGrad = sCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    sGrad.addColorStop(0, 'rgba(23, 23, 23, 0.18)');
-    sGrad.addColorStop(0.5, 'rgba(23, 23, 23, 0.04)');
-    sGrad.addColorStop(1, 'rgba(23, 23, 23, 0)');
+    sGrad.addColorStop(0, 'rgba(155, 92, 255, 0.2)');
+    sGrad.addColorStop(0.5, 'rgba(0, 0, 0, 0.6)');
+    sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     sCtx.fillStyle = sGrad;
     sCtx.fillRect(0, 0, 64, 64);
     const shadowTex = track(new THREE.CanvasTexture(shadowCanvas));
 
     const shadowGeo = track(new THREE.PlaneGeometry(2.5, 2.5));
-    const shadowMat = track(new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.7, depthWrite: false }));
+    const shadowMat = track(new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.8, depthWrite: false }));
     const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
     shadowMesh.rotation.x = -Math.PI / 2;
     shadowMesh.position.set(0, -1.3, 0);
@@ -75,8 +75,8 @@ export default function ProjectPortal({ className = "w-full h-[220px] sm:h-[260p
 
     // Concentric Frames
     const frames = [];
-    const frameMat = track(new THREE.LineBasicMaterial({ color: 0x171717, transparent: true, opacity: 0.75 }));
-    const cobaltFrameMat = track(new THREE.LineBasicMaterial({ color: 0x304FFE, transparent: true, opacity: 0.9 }));
+    const frameMat = track(new THREE.LineBasicMaterial({ color: 0x9B5CFF, transparent: true, opacity: 0.75 }));
+    const cobaltFrameMat = track(new THREE.LineBasicMaterial({ color: 0x4169FF, transparent: true, opacity: 0.9 }));
 
     for (let i = 0; i < 3; i++) {
       const size = 1.0 + i * 0.45;
@@ -89,10 +89,10 @@ export default function ProjectPortal({ className = "w-full h-[220px] sm:h-[260p
     // Floating Core Diamond
     const jewelGeo = track(new THREE.OctahedronGeometry(0.35, 0));
     const jewelMat = track(new THREE.MeshStandardMaterial({
-      color: 0x304FFE,
-      emissive: 0x172b8f,
-      emissiveIntensity: 0.35,
-      metalness: 0.9,
+      color: 0x9B5CFF,
+      emissive: 0x4169FF,
+      emissiveIntensity: 0.5,
+      metalness: 0.92,
       roughness: 0.15,
     }));
     const jewelMesh = new THREE.Mesh(jewelGeo, jewelMat);
@@ -172,10 +172,10 @@ export default function ProjectPortal({ className = "w-full h-[220px] sm:h-[260p
   }, []);
 
   return (
-    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-white border border-[#D8D5CD] shadow-editorial flex items-center justify-center`}>
+    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.6)] flex items-center justify-center`}>
       <div ref={mountRef} className="w-full h-full" />
-      <div className="absolute top-2.5 left-3 flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#F7F5F0] border border-[#D8D5CD] text-[9px] font-mono text-[#171717]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#304FFE]" />
+      <div className="absolute top-2.5 left-3 flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#121218] border border-white/[0.08] text-[9px] font-mono text-[#F5F4F8]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#9B5CFF]" />
         <span>FIG. 04 &bull; PROJECT PORTAL</span>
       </div>
     </div>

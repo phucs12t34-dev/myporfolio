@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 /**
- * Editorial Neural Orb - Minimalist Crystalline Sculpture
+ * Futuristic Neural Core - Crystalline Kinetic Sculpture
  * Concept: "Curiosity, logic, and intellectual exploration"
- * - Translucent Optical Glass Sphere + Satin Cobalt Equatorial Ring + Core Icosahedron
- * - Realistic soft ground shadow for spatial grounding
+ * - Translucent Optical Glass Sphere + Purple/Cobalt Gimbal Rings + Core Icosahedron
+ * - Dark ambient grounding
  * - Complies with web3d-integration-patterns (DPR clamp <= 1.75, Visibility API, thorough disposal)
  */
 export default function NeuralCore({ className = "w-full h-[320px] sm:h-[360px]" }) {
@@ -39,19 +39,19 @@ export default function NeuralCore({ className = "w-full h-[320px] sm:h-[360px]"
       return item;
     };
 
-    // Warm Studio Lighting
-    const ambientLight = new THREE.AmbientLight(0xf0eee8, 1.6);
+    // Dark Lighting
+    const ambientLight = new THREE.AmbientLight(0x181824, 2.5);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfffaed, 2.2);
+    const keyLight = new THREE.DirectionalLight(0xB994FF, 3.0);
     keyLight.position.set(4, 6, 5);
     scene.add(keyLight);
 
-    const cobaltLight = new THREE.DirectionalLight(0x304FFE, 1.6);
+    const cobaltLight = new THREE.DirectionalLight(0x4169FF, 2.2);
     cobaltLight.position.set(-4, -2, -3);
     scene.add(cobaltLight);
 
-    // Master Sculpture Group
+    // Master Group
     const group = new THREE.Group();
     scene.add(group);
 
@@ -61,9 +61,9 @@ export default function NeuralCore({ className = "w-full h-[320px] sm:h-[360px]"
     shadowCanvas.height = 64;
     const sCtx = shadowCanvas.getContext('2d');
     const sGrad = sCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    sGrad.addColorStop(0, 'rgba(23, 23, 23, 0.20)');
-    sGrad.addColorStop(0.5, 'rgba(23, 23, 23, 0.05)');
-    sGrad.addColorStop(1, 'rgba(23, 23, 23, 0)');
+    sGrad.addColorStop(0, 'rgba(155, 92, 255, 0.22)');
+    sGrad.addColorStop(0.5, 'rgba(0, 0, 0, 0.6)');
+    sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     sCtx.fillStyle = sGrad;
     sCtx.fillRect(0, 0, 64, 64);
     const shadowTex = track(new THREE.CanvasTexture(shadowCanvas));
@@ -72,7 +72,7 @@ export default function NeuralCore({ className = "w-full h-[320px] sm:h-[360px]"
     const shadowMat = track(new THREE.MeshBasicMaterial({
       map: shadowTex,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.8,
       depthWrite: false,
     }));
     const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
@@ -80,46 +80,46 @@ export default function NeuralCore({ className = "w-full h-[320px] sm:h-[360px]"
     shadowMesh.position.set(0, -1.6, 0);
     scene.add(shadowMesh);
 
-    // 1. Core Faceted Icosahedron (Charcoal/Cobalt)
+    // 1. Core Faceted Icosahedron (Electric Purple/Cobalt)
     const coreGeo = track(new THREE.IcosahedronGeometry(0.85, 0));
     const coreMat = track(new THREE.MeshStandardMaterial({
-      color: 0x171717,
-      emissive: 0x304FFE,
-      emissiveIntensity: 0.35,
-      metalness: 0.9,
-      roughness: 0.2,
+      color: 0x0E0E14,
+      emissive: 0x9B5CFF,
+      emissiveIntensity: 0.55,
+      metalness: 0.92,
+      roughness: 0.18,
     }));
     const coreMesh = new THREE.Mesh(coreGeo, coreMat);
     group.add(coreMesh);
 
     const edgeGeo = track(new THREE.EdgesGeometry(coreGeo));
-    const edgeMat = track(new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.75 }));
+    const edgeMat = track(new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 }));
     const edgeMesh = new THREE.LineSegments(edgeGeo, edgeMat);
     coreMesh.add(edgeMesh);
 
     // 2. Optical Glass Translucent Sphere
     const sphereGeo = track(new THREE.SphereGeometry(1.4, 32, 32));
     const sphereMat = track(new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
-      roughness: 0.06,
-      metalness: 0.05,
-      transmission: 0.88,
+      color: 0x12121E,
+      roughness: 0.08,
+      metalness: 0.1,
+      transmission: 0.82,
       ior: 1.5,
-      thickness: 1.0,
+      thickness: 1.2,
       transparent: true,
-      opacity: 0.82,
+      opacity: 0.78,
     }));
     const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
     group.add(sphereMesh);
 
-    // 3. Satin Cobalt Gimbal Ring
+    // 3. Satin Purple/Cobalt Gimbal Ring
     const ringGeo = track(new THREE.TorusGeometry(1.65, 0.04, 16, 64));
     const ringMat = track(new THREE.MeshStandardMaterial({
-      color: 0x304FFE,
-      emissive: 0x172b8f,
-      emissiveIntensity: 0.3,
-      metalness: 0.85,
-      roughness: 0.18,
+      color: 0x9B5CFF,
+      emissive: 0x4169FF,
+      emissiveIntensity: 0.4,
+      metalness: 0.88,
+      roughness: 0.16,
     }));
     const ringMesh = new THREE.Mesh(ringGeo, ringMat);
     ringMesh.rotation.x = Math.PI / 3;
@@ -198,10 +198,10 @@ export default function NeuralCore({ className = "w-full h-[320px] sm:h-[360px]"
   }, []);
 
   return (
-    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-white border border-[#D8D5CD] shadow-editorial flex items-center justify-center`}>
+    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.6)] flex items-center justify-center`}>
       <div ref={mountRef} className="w-full h-full" />
-      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#F7F5F0] border border-[#D8D5CD] text-[10px] font-mono text-[#171717]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#304FFE]" />
+      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#121218] border border-white/[0.08] text-[10px] font-mono text-[#F5F4F8]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#9B5CFF]" />
         <span>FIG. 02 &bull; NEURAL CORE</span>
       </div>
     </div>

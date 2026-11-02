@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 /**
- * Editorial Algorithmic Structure - Minimalist Mathematical Sculpture
+ * Algorithmic Structure - Discrete Computational Nodes
  * Concept: "Logic, Discrete Mathematics, and Computational Rigour"
- * - Interconnected geometric forms: Matte Cobalt Octahedron, Titanium Cube & Fine Struts
- * - Realistic soft ground shadow for spatial grounding
+ * - Matte Purple/Cobalt Octahedron, Satellite Cubes & Luminous Struts
+ * - Dark ambient grounding
  * - Complies with web3d-integration-patterns (DPR clamp <= 1.75, Visibility API, thorough disposal)
  */
 export default function AlgorithmicStructure({ className = "w-full h-[280px] sm:h-[320px]" }) {
@@ -39,14 +39,14 @@ export default function AlgorithmicStructure({ className = "w-full h-[280px] sm:
       return item;
     };
 
-    const ambientLight = new THREE.AmbientLight(0xf0eee8, 1.6);
+    const ambientLight = new THREE.AmbientLight(0x181824, 2.5);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfffaed, 2.2);
+    const keyLight = new THREE.DirectionalLight(0xB994FF, 3.0);
     keyLight.position.set(4, 6, 5);
     scene.add(keyLight);
 
-    const cobaltLight = new THREE.DirectionalLight(0x304FFE, 1.5);
+    const cobaltLight = new THREE.DirectionalLight(0x4169FF, 2.2);
     cobaltLight.position.set(-4, -1, -3);
     scene.add(cobaltLight);
 
@@ -59,47 +59,49 @@ export default function AlgorithmicStructure({ className = "w-full h-[280px] sm:
     shadowCanvas.height = 64;
     const sCtx = shadowCanvas.getContext('2d');
     const sGrad = sCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    sGrad.addColorStop(0, 'rgba(23, 23, 23, 0.18)');
-    sGrad.addColorStop(0.5, 'rgba(23, 23, 23, 0.04)');
-    sGrad.addColorStop(1, 'rgba(23, 23, 23, 0)');
+    sGrad.addColorStop(0, 'rgba(155, 92, 255, 0.2)');
+    sGrad.addColorStop(0.5, 'rgba(0, 0, 0, 0.6)');
+    sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     sCtx.fillStyle = sGrad;
     sCtx.fillRect(0, 0, 64, 64);
     const shadowTex = track(new THREE.CanvasTexture(shadowCanvas));
 
     const shadowGeo = track(new THREE.PlaneGeometry(3.0, 3.0));
-    const shadowMat = track(new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.7, depthWrite: false }));
+    const shadowMat = track(new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.8, depthWrite: false }));
     const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
     shadowMesh.rotation.x = -Math.PI / 2;
     shadowMesh.position.set(0, -1.5, 0);
     scene.add(shadowMesh);
 
-    // 1. Center Matte Cobalt Octahedron
+    // 1. Center Matte Purple Octahedron
     const octGeo = track(new THREE.OctahedronGeometry(1.0, 0));
     const octMat = track(new THREE.MeshStandardMaterial({
-      color: 0x304FFE,
-      emissive: 0x172b8f,
-      emissiveIntensity: 0.25,
-      metalness: 0.85,
-      roughness: 0.2,
+      color: 0x9B5CFF,
+      emissive: 0x4169FF,
+      emissiveIntensity: 0.45,
+      metalness: 0.88,
+      roughness: 0.18,
     }));
     const octMesh = new THREE.Mesh(octGeo, octMat);
     group.add(octMesh);
 
     const octEdgeGeo = track(new THREE.EdgesGeometry(octGeo));
-    const octEdgeMat = track(new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 }));
+    const octEdgeMat = track(new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 }));
     const octEdges = new THREE.LineSegments(octEdgeGeo, octEdgeMat);
     octMesh.add(octEdges);
 
     // 2. Satellite Nodes (Small Beveled Cubes)
     const satGeo = track(new THREE.BoxGeometry(0.42, 0.42, 0.42));
     const satMat = track(new THREE.MeshStandardMaterial({
-      color: 0x171717,
-      metalness: 0.9,
+      color: 0x0E0E14,
+      emissive: 0x9B5CFF,
+      emissiveIntensity: 0.3,
+      metalness: 0.92,
       roughness: 0.2,
     }));
 
     const satEdgesGeo = track(new THREE.EdgesGeometry(satGeo));
-    const satEdgeMat = track(new THREE.LineBasicMaterial({ color: 0x304FFE, transparent: true, opacity: 0.8 }));
+    const satEdgeMat = track(new THREE.LineBasicMaterial({ color: 0xB994FF, transparent: true, opacity: 0.9 }));
 
     const sat1 = new THREE.Mesh(satGeo, satMat);
     sat1.position.set(-1.6, 0.6, 0.4);
@@ -112,7 +114,7 @@ export default function AlgorithmicStructure({ className = "w-full h-[280px] sm:
     group.add(sat2);
 
     // 3. Fine Connecting Line Struts
-    const lineMat = track(new THREE.LineBasicMaterial({ color: 0xD8D5CD, transparent: true, opacity: 0.8 }));
+    const lineMat = track(new THREE.LineBasicMaterial({ color: 0x9B5CFF, transparent: true, opacity: 0.6 }));
     const pts1 = [new THREE.Vector3(0, 0, 0), sat1.position];
     const lineGeo1 = track(new THREE.BufferGeometry().setFromPoints(pts1));
     group.add(new THREE.Line(lineGeo1, lineMat));
@@ -194,10 +196,10 @@ export default function AlgorithmicStructure({ className = "w-full h-[280px] sm:
   }, []);
 
   return (
-    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-white border border-[#D8D5CD] shadow-editorial flex items-center justify-center`}>
+    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.6)] flex items-center justify-center`}>
       <div ref={mountRef} className="w-full h-full" />
-      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#F7F5F0] border border-[#D8D5CD] text-[10px] font-mono text-[#171717]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#304FFE]" />
+      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#121218] border border-white/[0.08] text-[10px] font-mono text-[#F5F4F8]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#9B5CFF]" />
         <span>FIG. 03 &bull; ALGORITHMIC STRUCTURE</span>
       </div>
     </div>

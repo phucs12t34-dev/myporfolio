@@ -3,13 +3,13 @@ import * as THREE from 'three';
 import { RotateCw, Sparkles, Box } from 'lucide-react';
 
 /**
- * EditorialSculpture - The Architectural Monolith & Cobalt Torus
- * Contemporary Digital Art Direction:
- * - Frosted Optical Crystal Box with beveled edges and optical transmission
- * - Interlocking lustrous Cobalt Blue Torus
- * - Core brushed metallic octahedron
- * - Realistic soft ground shadow for spatial grounding
- * - Adheres strictly to web3d-integration-patterns (DPR clamp <= 1.75, Visibility API, thorough disposal)
+ * DigitalSculpture - Futuristic Monolith & Crystalline Torus
+ * Art Direction:
+ * - Frosted Optical Crystal Box with purple edge highlights
+ * - Interlocking lustrous Cobalt/Purple Torus
+ * - Core brushed titanium octahedron with pulsing interior
+ * - Deep dark surface grounding
+ * - Complies strictly with web3d-integration-patterns (DPR clamp <= 1.75, Visibility API, thorough disposal)
  */
 export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-[520px]" }) {
   const mountRef = useRef(null);
@@ -46,19 +46,19 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
       return item;
     };
 
-    // 2. Warm Studio Gallery Lighting Rig
-    const ambientLight = new THREE.AmbientLight(0xf0eee8, 1.6);
+    // 2. Futuristic Cybernetic Lighting Rig
+    const ambientLight = new THREE.AmbientLight(0x181824, 2.5);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfffaed, 2.4);
+    const keyLight = new THREE.DirectionalLight(0xB994FF, 3.2);
     keyLight.position.set(4, 7, 5);
     scene.add(keyLight);
 
-    const cobaltRim = new THREE.DirectionalLight(0x304FFE, 1.8);
+    const cobaltRim = new THREE.DirectionalLight(0x4169FF, 2.8);
     cobaltRim.position.set(-5, 2, -4);
     scene.add(cobaltRim);
 
-    const softFill = new THREE.DirectionalLight(0xd8d5cd, 0.9);
+    const softFill = new THREE.DirectionalLight(0x9B5CFF, 1.2);
     softFill.position.set(0, -3, 4);
     scene.add(softFill);
 
@@ -67,15 +67,15 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     masterGroup.position.set(0, 0.2, 0);
     scene.add(masterGroup);
 
-    // 4. Soft Contact Ground Shadow
+    // 4. Soft Contact Ground Shadow (Subtle dark purple vignette)
     const shadowCanvas = document.createElement('canvas');
     shadowCanvas.width = 64;
     shadowCanvas.height = 64;
     const sCtx = shadowCanvas.getContext('2d');
     const sGrad = sCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    sGrad.addColorStop(0, 'rgba(23, 23, 23, 0.22)');
-    sGrad.addColorStop(0.4, 'rgba(23, 23, 23, 0.08)');
-    sGrad.addColorStop(1, 'rgba(23, 23, 23, 0)');
+    sGrad.addColorStop(0, 'rgba(155, 92, 255, 0.25)');
+    sGrad.addColorStop(0.35, 'rgba(5, 5, 8, 0.6)');
+    sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     sCtx.fillStyle = sGrad;
     sCtx.fillRect(0, 0, 64, 64);
     const shadowTex = track(new THREE.CanvasTexture(shadowCanvas));
@@ -84,7 +84,7 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     const shadowMat = track(new THREE.MeshBasicMaterial({
       map: shadowTex,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.9,
       depthWrite: false,
     }));
     const shadowPlane = new THREE.Mesh(shadowGeo, shadowMat);
@@ -95,16 +95,16 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     // 5. Outer Frosted Optical Crystal Box
     const boxGeo = track(new THREE.BoxGeometry(1.9, 1.9, 1.9, 2, 2, 2));
     const glassMaterial = track(new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
-      emissive: 0x171717,
-      emissiveIntensity: 0.04,
-      roughness: 0.08,
-      metalness: 0.05,
-      transmission: 0.85,
-      ior: 1.52,
-      thickness: 1.2,
+      color: 0x12121e,
+      emissive: 0x9B5CFF,
+      emissiveIntensity: 0.08,
+      roughness: 0.12,
+      metalness: 0.1,
+      transmission: 0.82,
+      ior: 1.55,
+      thickness: 1.4,
       transparent: true,
-      opacity: 0.82,
+      opacity: 0.78,
       specularIntensity: 1.0,
       depthWrite: true,
       side: THREE.DoubleSide,
@@ -115,21 +115,21 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     // Fine Edge Chamfer Lines
     const edgeGeo = track(new THREE.EdgesGeometry(boxGeo, 24));
     const edgeMat = track(new THREE.LineBasicMaterial({
-      color: 0x304FFE,
+      color: 0xB994FF,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.6,
     }));
     const glassEdges = new THREE.LineSegments(edgeGeo, edgeMat);
     glassMesh.add(glassEdges);
 
-    // 6. Interlocking Lustrous Cobalt Torus
+    // 6. Interlocking Lustrous Cobalt/Purple Torus
     const torusGeo = track(new THREE.TorusGeometry(1.25, 0.22, 24, 64));
     const torusMaterial = track(new THREE.MeshStandardMaterial({
-      color: 0x304FFE,
-      emissive: 0x172b8f,
-      emissiveIntensity: 0.25,
-      metalness: 0.88,
-      roughness: 0.16,
+      color: 0x4169FF,
+      emissive: 0x9B5CFF,
+      emissiveIntensity: 0.45,
+      metalness: 0.92,
+      roughness: 0.18,
     }));
     const torusMesh = new THREE.Mesh(torusGeo, torusMaterial);
     torusMesh.rotation.x = Math.PI / 3;
@@ -139,11 +139,11 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     // 7. Core Titanium Octahedron
     const coreGeo = track(new THREE.OctahedronGeometry(0.55, 0));
     const coreMat = track(new THREE.MeshStandardMaterial({
-      color: 0x222226,
-      emissive: 0x304FFE,
-      emissiveIntensity: 0.35,
+      color: 0x0E0E14,
+      emissive: 0x9B5CFF,
+      emissiveIntensity: 0.6,
       metalness: 0.95,
-      roughness: 0.18,
+      roughness: 0.15,
     }));
     const coreMesh = new THREE.Mesh(coreGeo, coreMat);
     masterGroup.add(coreMesh);
@@ -152,7 +152,7 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     const coreEdgeMat = track(new THREE.LineBasicMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.9,
     }));
     const coreEdges = new THREE.LineSegments(coreEdgeGeo, coreEdgeMat);
     coreMesh.add(coreEdges);
@@ -160,9 +160,9 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
     // 8. Subtle Floating Orbit Ring
     const orbitGeo = track(new THREE.TorusGeometry(1.75, 0.008, 8, 64));
     const orbitMat = track(new THREE.MeshBasicMaterial({
-      color: 0x66645F,
+      color: 0xB994FF,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.4,
     }));
     const orbitRing = new THREE.Mesh(orbitGeo, orbitMat);
     orbitRing.rotation.x = Math.PI / 2.4;
@@ -275,22 +275,22 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
   }, []);
 
   return (
-    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-[#FFFFFF] border border-[#D8D5CD] shadow-editorial`}>
+    <div className={`relative ${className} select-none overflow-hidden rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.8)]`}>
       {/* Three.js Canvas Mount */}
       <div ref={mountRef} className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing" />
 
-      {/* Top Left Editorial Figure Label */}
+      {/* Top Left Figure Label */}
       <div className="absolute top-3.5 left-4 z-10 flex items-center gap-2 pointer-events-none">
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#F7F5F0] border border-[#D8D5CD] text-[10px] font-mono text-[#171717] tracking-wider uppercase">
-          <Box className="w-3 h-3 text-[#304FFE]" />
-          <span>FIG. 01 &bull; ARCHITECTURAL SCULPTURE</span>
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#121218] border border-white/[0.08] text-[10px] font-mono text-[#F5F4F8] tracking-wider uppercase">
+          <Box className="w-3 h-3 text-[#9B5CFF]" />
+          <span>FIG. 01 &bull; DIGITAL MONOLITH</span>
         </div>
       </div>
 
       {/* Top Right Material Metadata Stamp */}
       <div className="absolute top-3.5 right-4 z-10 hidden sm:flex items-center pointer-events-none">
-        <span className="text-[10px] font-mono text-[#8E8B83] tracking-widest uppercase">
-          OPTICAL GLASS &times; COBALT
+        <span className="text-[10px] font-mono text-[#AAA7B2] tracking-widest uppercase">
+          CRYSTALLINE &times; COBALT CORE
         </span>
       </div>
 
@@ -300,8 +300,8 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
           onClick={() => setAutoRotate(!autoRotate)}
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-mono border transition-all ${
             autoRotate
-              ? "bg-[#304FFE]/10 text-[#304FFE] border-[#304FFE]/40 shadow-sm"
-              : "bg-[#F7F5F0] text-[#66645F] border-[#D8D5CD] hover:text-[#171717]"
+              ? "bg-[#9B5CFF]/15 text-[#B994FF] border-[#9B5CFF]/40 shadow-glow-purple"
+              : "bg-[#121218] text-[#706D79] border-white/[0.08] hover:text-[#F5F4F8]"
           }`}
           title="Bật / Tắt chế độ tự động xoay"
         >
@@ -312,8 +312,8 @@ export default function EditorialSculpture({ className = "w-full h-[460px] sm:h-
 
       {/* Bottom Left Physical Metadata */}
       <div className="absolute bottom-3.5 left-4 z-10 flex items-center gap-2 pointer-events-none">
-        <span className="text-[10px] font-mono text-[#66645F]">
-          REFRACTION: IOR 1.52 &bull; 60 FPS
+        <span className="text-[10px] font-mono text-[#706D79]">
+          PBR REFRACTION &bull; 60 FPS
         </span>
       </div>
     </div>

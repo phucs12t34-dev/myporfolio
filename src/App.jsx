@@ -27,18 +27,18 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#F7F5F0] text-[#171717] selection:bg-[#304FFE]/15 selection:text-[#304FFE]">
-      {/* Pattern 1: Three.js Editorial Dust Background */}
+    <div className="relative min-h-screen bg-[#050505] text-[#F5F4F8] selection:bg-[#9B5CFF]/30 selection:text-[#B994FF]">
+      {/* Pattern 1: Three.js Space Particle Background */}
       <Web3DBackground />
 
       {/* Main UI Layer Overlay */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Modernist Editorial Navbar */}
+        {/* Floating Futuristic Navbar */}
         <Navbar personal={personal} />
 
         {/* Main Content Sections */}
         <main className="flex-1">
-          {/* Hero Section with Signature 3D Sculpture & Interactive Terminal */}
+          {/* Hero Section with Asymmetric Bento & Interactive macOS Terminal */}
           <HeroSection
             personal={personal}
             heroTerminal={PORTFOLIO_DATA.heroTerminal}
@@ -56,7 +56,7 @@ export default function App() {
             skills={PORTFOLIO_DATA.skills}
           />
 
-          {/* Featured Projects with Bento Grid */}
+          {/* Featured Projects with Bento Grid & Search Filter */}
           <ProjectsSection
             projects={ALL_PROJECTS}
             categories={PROJECT_CATEGORIES}
@@ -91,11 +91,11 @@ export default function App() {
           />
         </main>
 
-        {/* Minimal Swiss Modernist Footer */}
+        {/* Futuristic Minimal Footer */}
         <Footer personal={personal} />
       </div>
 
-      {/* Project Detail Modal with Architecture & 3D Digital Twin Viewer */}
+      {/* Project Detail Modal with Architecture & 3D Simulation Twin Viewer */}
       {selectedDetail && (
         <ProjectModal
           project={selectedDetail.project}
@@ -108,7 +108,7 @@ export default function App() {
         />
       )}
 
-      {/* Level 1 Public Project Development Journal Modal */}
+      {/* Level 1 & Level 2 Two-Level Project Development Journal Modal */}
       {selectedJournalProject && (
         <JournalModal
           project={selectedJournalProject}

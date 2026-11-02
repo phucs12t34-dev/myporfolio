@@ -36,18 +36,18 @@ export default function ContactSection({ personal }) {
   };
 
   return (
-    <section id="contact" className="py-24 relative z-10 border-t border-[#D8D5CD] bg-[#F7F5F0]">
+    <section id="contact" className="py-24 relative z-10 border-t border-white/[0.08] bg-[#050505]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-left">
         {/* Section Header */}
         <div className="space-y-3">
-          <div className="editorial-stamp">
+          <div className="section-stamp">
             <span>08 / CORRESPONDENCE</span>
           </div>
-          <h2 className="font-editorial text-4xl sm:text-6xl text-[#171717] font-normal tracking-tight">
+          <h2 className="font-heading text-4xl sm:text-6xl text-[#F5F4F8] font-bold tracking-tight">
             Let's build something remarkable together.
           </h2>
-          <p className="font-sans text-[#66645F] text-base max-w-xl leading-relaxed">
-            Luôn cởi mở trao đổi về các bài toán giải thuật C++, dự án không gian Web3D, robotics và các cơ hội học thuật.
+          <p className="font-sans text-[#AAA7B2] text-base max-w-xl leading-relaxed">
+            Luôn cởi mở trao đổi về các bài toán giải thuật C++, mô phỏng số, đồ họa Web3D và các cơ hội học thuật.
           </p>
         </div>
 
@@ -55,20 +55,20 @@ export default function ContactSection({ personal }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Direct Links & 3D Epilogue (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#D8D5CD] shadow-editorial space-y-6 text-left">
-              <span className="font-mono text-xs text-[#8E8B83] uppercase tracking-wider block border-b border-[#F0EEE8] pb-2">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark space-y-6 text-left">
+              <span className="font-mono text-xs text-[#706D79] uppercase tracking-wider block border-b border-white/[0.06] pb-2">
                 Direct Channels
               </span>
 
               {/* Email Card with Copy Action */}
-              <div className="p-4 rounded-xl bg-[#F7F5F0] border border-[#D8D5CD] flex items-center justify-between gap-3">
+              <div className="p-4 rounded-xl bg-[#121218] border border-white/[0.08] flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-[#D8D5CD] flex items-center justify-center text-[#304FFE] shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-[#181824] border border-white/[0.08] flex items-center justify-center text-[#9B5CFF] shrink-0 shadow-glow-purple">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div className="truncate">
-                    <span className="font-mono text-[10px] text-[#8E8B83] uppercase block">Email Address</span>
-                    <span className="font-mono text-xs text-[#171717] font-semibold truncate block">
+                    <span className="font-mono text-[10px] text-[#706D79] uppercase block">Email Address</span>
+                    <span className="font-mono text-xs text-[#F5F4F8] font-semibold truncate block">
                       {emailAddress}
                     </span>
                   </div>
@@ -76,10 +76,10 @@ export default function ContactSection({ personal }) {
 
                 <button
                   onClick={handleCopyEmail}
-                  className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-[#F0EEE8] border border-[#D8D5CD] text-xs font-mono text-[#171717] transition-colors shrink-0"
+                  className="px-2.5 py-1.5 rounded-lg bg-[#181824] hover:bg-[#222230] border border-white/[0.08] text-xs font-mono text-[#F5F4F8] transition-colors shrink-0"
                   title="Sao chép email"
                 >
-                  {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#304FFE]" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#9B5CFF]" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
               </div>
 
@@ -90,9 +90,9 @@ export default function ContactSection({ personal }) {
                     href={personal.socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-[#F7F5F0] hover:bg-[#F0EEE8] border border-[#D8D5CD] flex items-center gap-2.5 text-xs font-mono text-[#171717] transition-colors"
+                    className="p-3 rounded-xl bg-[#121218] hover:bg-[#1A1A24] border border-white/[0.08] flex items-center gap-2.5 text-xs font-mono text-[#F5F4F8] hover:border-[#9B5CFF]/40 transition-colors"
                   >
-                    <GithubIcon className="w-4 h-4 text-[#171717]" />
+                    <GithubIcon className="w-4 h-4 text-[#F5F4F8]" />
                     <span>GitHub Profile</span>
                   </a>
                 )}
@@ -102,9 +102,9 @@ export default function ContactSection({ personal }) {
                     href={personal.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-[#F7F5F0] hover:bg-[#F0EEE8] border border-[#D8D5CD] flex items-center gap-2.5 text-xs font-mono text-[#171717] transition-colors"
+                    className="p-3 rounded-xl bg-[#121218] hover:bg-[#1A1A24] border border-white/[0.08] flex items-center gap-2.5 text-xs font-mono text-[#F5F4F8] hover:border-[#9B5CFF]/40 transition-colors"
                   >
-                    <LinkedinIcon className="w-4 h-4 text-[#304FFE]" />
+                    <LinkedinIcon className="w-4 h-4 text-[#9B5CFF]" />
                     <span>LinkedIn</span>
                   </a>
                 )}
@@ -115,21 +115,21 @@ export default function ContactSection({ personal }) {
             <CrystallineClosing className="w-full h-[220px] sm:h-[260px]" />
           </div>
 
-          {/* Right Column: Editorial Contact Form (7 cols) */}
-          <div className="lg:col-span-7 p-6 sm:p-10 rounded-2xl bg-white border border-[#D8D5CD] shadow-editorial text-left">
+          {/* Right Column: Contact Form (7 cols) */}
+          <div className="lg:col-span-7 p-6 sm:p-10 rounded-2xl bg-[#0B0B0F] border border-white/[0.08] shadow-card-dark text-left">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="border-b border-[#F0EEE8] pb-4">
-                <h3 className="font-editorial text-2xl font-bold text-[#171717]">
+              <div className="border-b border-white/[0.06] pb-4">
+                <h3 className="font-heading text-2xl font-bold text-[#F5F4F8]">
                   Send a Direct Message
                 </h3>
-                <p className="font-sans text-xs text-[#66645F] mt-1">
+                <p className="font-sans text-xs text-[#AAA7B2] mt-1">
                   Tin nhắn sẽ mở trực tiếp ứng dụng email với nội dung đã được định dạng chuẩn.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="font-mono text-xs text-[#171717] uppercase tracking-wider block">
+                  <label className="font-mono text-xs text-[#AAA7B2] uppercase tracking-wider block">
                     Tên của bạn *
                   </label>
                   <input
@@ -138,12 +138,12 @@ export default function ContactSection({ personal }) {
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="Nguyễn Văn A"
-                    className="w-full px-4 py-2.5 rounded-xl bg-[#F7F5F0] border border-[#D8D5CD] text-xs font-sans text-[#171717] placeholder:text-[#8E8B83] outline-none focus:border-[#304FFE] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#121218] border border-white/[0.08] text-xs font-sans text-[#F5F4F8] placeholder:text-[#706D79] outline-none focus:border-[#9B5CFF]/60 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="font-mono text-xs text-[#171717] uppercase tracking-wider block">
+                  <label className="font-mono text-xs text-[#AAA7B2] uppercase tracking-wider block">
                     Email liên hệ *
                   </label>
                   <input
@@ -152,13 +152,13 @@ export default function ContactSection({ personal }) {
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     placeholder="name@example.com"
-                    className="w-full px-4 py-2.5 rounded-xl bg-[#F7F5F0] border border-[#D8D5CD] text-xs font-sans text-[#171717] placeholder:text-[#8E8B83] outline-none focus:border-[#304FFE] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#121218] border border-white/[0.08] text-xs font-sans text-[#F5F4F8] placeholder:text-[#706D79] outline-none focus:border-[#9B5CFF]/60 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="font-mono text-xs text-[#171717] uppercase tracking-wider block">
+                <label className="font-mono text-xs text-[#AAA7B2] uppercase tracking-wider block">
                   Nội dung trao đổi *
                 </label>
                 <textarea
@@ -167,14 +167,14 @@ export default function ContactSection({ personal }) {
                   value={formData.message}
                   onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                   placeholder="Tôi muốn thảo luận về dự án thuật toán hoặc cơ hội hợp tác..."
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#F7F5F0] border border-[#D8D5CD] text-xs font-sans text-[#171717] placeholder:text-[#8E8B83] outline-none focus:border-[#304FFE] transition-colors resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#121218] border border-white/[0.08] text-xs font-sans text-[#F5F4F8] placeholder:text-[#706D79] outline-none focus:border-[#9B5CFF]/60 transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={formStatus === 'sending'}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#171717] hover:bg-[#304FFE] text-white font-medium text-xs sm:text-sm transition-all duration-200 shadow-editorial hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#9B5CFF] hover:bg-[#8545EA] text-white font-medium text-xs sm:text-sm transition-all duration-200 shadow-glow-purple hover:-translate-y-0.5"
               >
                 <span>{formStatus === 'sending' ? 'Đang gửi...' : 'Gửi Thông điệp'}</span>
                 <Send className="w-3.5 h-3.5" />

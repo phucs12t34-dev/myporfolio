@@ -12,4 +12,6 @@ dist-ssr
 *.sln
 *.sw?
 
+.vercel
 myporfolio/
+screenshot-*.png

@@ -8,9 +8,8 @@ export default function HeroTerminal({ terminalData }) {
 
   const commandLines = terminalData?.commandLines || [
     { cmd: "whoami", output: "student_developer && algorithm_craftsman" },
-    { cmd: "core_stack", output: "['C++20 (DSA / CP)', 'Three.js / WebGL', 'Python 3.12', 'React 18']" },
-    { cmd: "focus_areas", output: "['Competitive Programming', 'Spatial Graphics & Simulation', 'System Architecture']" },
-    { cmd: "current_status", output: "Refining algorithmic rigour & vintage editorial portfolio..." },
+    { cmd: "ls -la skills/", output: "drwxr-xr-x 4 dev staff 128 Nov 02 18:00 c++20_dsa/\n-rw-r--r-- 1 dev staff 2048 Nov 02 18:00 segment_tree.cpp\n-rw-r--r-- 1 dev staff 1024 Nov 02 18:00 dinic_max_flow.cpp\n-rw-r--r-- 1 dev staff 4096 Nov 02 18:00 threejs_shaders.glsl" },
+    { cmd: "cat status.json", output: "{\n  \"status\": \"ACTIVE_RESEARCH\",\n  \"focus\": [\"Competitive Programming\", \"Robotics Digital Twin\", \"Web3D Integration\"],\n  \"rigour\": \"Stanford CS97SI (10^8 ops/sec)\"\n}" },
   ];
 
   const handleCopySnippet = () => {
@@ -26,35 +25,35 @@ export default function HeroTerminal({ terminalData }) {
 
     switch (cleanCmd) {
       case 'help':
-        reply = "Commands: 'stack', 'dsa', 'web3d', 'projects', 'status', 'c++', 'arch', 'clear'";
+        reply = "Available commands: 'whoami', 'stack', 'dsa', 'web3d', 'projects', 'status', 'c++', 'clear'";
+        break;
+      case 'whoami':
+        reply = "student_developer | Competitive Programming & Web3D Systems";
         break;
       case 'stack':
-        reply = "C++20 (GCC/Clang), Python 3.12, Three.js WebGL, React 18, Tailwind CSS";
+        reply = "Languages: C++20 (GCC/Clang), Python 3.12, JavaScript (ES2024)\nGraphics: Three.js WebGL, Shaders GLSL\nFrameworks: React 18, Tailwind CSS, Vite\nHardware/IoT: ESP32, JetBot Differential Drive, LiDAR";
         break;
       case 'dsa':
-        reply = "C++20 DSA & CP Toolkit:\n- Segment Tree w/ Lazy Propagation O(log N)\n- Fenwick Tree (BIT) O(log N)\n- Dinic Max Flow O(V^2 * E)\n- LCA Binary Lifting O(N log N) prep, O(log N) query\n- Stanford CS97SI constraints (10^8 ops/sec)";
+        reply = "C++20 Competitive Programming Toolkit:\n- Segment Tree with Lazy Propagation O(log N)\n- Fenwick Tree (Binary Indexed Tree) O(log N)\n- Dinic Max Flow O(V^2 * E)\n- LCA Binary Lifting O(N log N) preprocess, O(log N) query\n- Disjoint Set Union (DSU) with Path Compression O(alpha(N))\n- Stanford CS97SI constraints (10^8 ops/sec, Fast I/O)";
         break;
       case 'web3d':
-        reply = "Web3D Integration Patterns:\n- Pattern 1: Layered separation (Three.js canvas + DOM UI)\n- DPR clamp <= 1.75\n- Page Visibility API & IntersectionObserver throttling\n- Complete WebGL resource disposal on unmount";
+        reply = "Web3D Integration Patterns:\n- Layered separation: Canvas background + Accessible DOM UI\n- Dynamic DPR clamp (Math.min(devicePixelRatio, 1.75))\n- Page Visibility API & IntersectionObserver render throttling\n- Full WebGL memory disposal on unmount";
         break;
       case 'projects':
-        reply = "1. DSA & CP Toolkit (C++20)\n2. SafeIron AI (Thermal Inspection)\n3. JetBot Simulation (Robotics Web3D)\n4. VLI-10 Lab (Optics & Physics)";
+        reply = "1. SafeIron AI: Computer Vision Thermal Iron Inspection\n2. JetBot Simulation: Differential Drive Robotics Digital Twin\n3. DSA & CP Toolkit: C++20 Competitive Programming Algorithms\n4. VLI-10 Lab: Interactive Physics & Optical Virtual Experiments";
         break;
       case 'status':
-        reply = "ACTIVE: Exploring advanced algorithms & crafting tactile digital experiences.";
+        reply = "ACTIVE: Investigating tree decomposition, robotics kinematics and high-performance WebGL.";
         break;
       case 'c++':
-        reply = "#include <iostream>\nint main() {\n  std::ios_base::sync_with_stdio(false);\n  std::cout << \"Editorial Craft x Algorithmic Rigour\\n\";\n  return 0;\n}";
-        break;
-      case 'arch':
-        reply = "Architecture: Vintage Editorial typography (Instrument Serif + Inter) + Interactive 3D (Three.js PBR) + Modular project development journals.";
+        reply = "#include <iostream>\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    cout << \"Mastering C++ Algorithms x Futuristic Web3D\\n\";\n    return 0;\n}";
         break;
       case 'clear':
         setCustomHistory([]);
         setInputVal('');
         return;
       default:
-        reply = `Command not recognized: '${cleanCmd}'. Type 'help' for available commands.`;
+        reply = `bash: command not found: ${cleanCmd}. Type 'help' for available commands.`;
     }
 
     setCustomHistory(prev => [...prev, { cmd: cmdText, output: reply }]);
@@ -68,30 +67,31 @@ export default function HeroTerminal({ terminalData }) {
   };
 
   return (
-    <div className="w-full rounded-2xl overflow-hidden bg-white border border-[#D8D5CD] shadow-editorial font-mono text-xs flex flex-col h-[460px] sm:h-[520px]">
-      {/* Editorial Terminal Header */}
-      <div className="bg-[#F7F5F0] px-4 py-3 border-b border-[#D8D5CD] flex items-center justify-between select-none">
+    <div className="w-full rounded-2xl overflow-hidden bg-[#0A0A0E] border border-white/[0.08] shadow-[0_16px_48px_-8px_rgba(0,0,0,0.9)] font-mono text-xs flex flex-col h-[460px] sm:h-[520px]">
+      {/* macOS Terminal Title Bar */}
+      <div className="bg-[#121218] px-4 py-3 border-b border-white/[0.08] flex items-center justify-between select-none">
         <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#171717]/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#66645F]/50" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#D8D5CD]" />
+          {/* macOS 3 Window Controls */}
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] inline-block" />
+            <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] inline-block" />
+            <span className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] inline-block" />
           </div>
-          <span className="text-[11px] font-semibold text-[#171717] ml-2">
-            workspace@dev-editorial: ~/portfolio
+          <span className="text-[11px] font-medium text-[#AAA7B2] ml-2 tracking-wide">
+            developer@portfolio:~
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={handleCopySnippet}
-            className="flex items-center gap-1 px-2 py-1 rounded bg-white hover:bg-[#F0EEE8] text-[#66645F] hover:text-[#171717] border border-[#D8D5CD] transition-colors text-[10px]"
-            title="Sao chép nội dung log"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#181822] hover:bg-[#222230] text-[#AAA7B2] hover:text-[#F5F4F8] border border-white/[0.06] transition-colors text-[10px]"
+            title="Sao chép log terminal"
           >
             {copied ? (
               <>
-                <Check className="w-3 h-3 text-[#304FFE]" />
-                <span className="text-[#304FFE]">Copied</span>
+                <Check className="w-3 h-3 text-[#9B5CFF]" />
+                <span className="text-[#B994FF]">Copied</span>
               </>
             ) : (
               <>
@@ -104,15 +104,15 @@ export default function HeroTerminal({ terminalData }) {
       </div>
 
       {/* Terminal Content Body */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-white text-[#171717] text-left">
-        {/* Default Startup Lines */}
+      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-[#0A0A0E] text-[#F5F4F8] text-left">
+        {/* Startup Logs */}
         {commandLines.map((item, idx) => (
           <div key={idx} className="space-y-1">
-            <div className="flex items-center gap-2 text-[#304FFE] font-semibold">
-              <span className="text-[#66645F] select-none">$</span>
-              <span>{item.cmd}</span>
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="text-[#9B5CFF] select-none">developer@portfolio:~$</span>
+              <span className="text-[#F5F4F8]">{item.cmd}</span>
             </div>
-            <div className="pl-4 text-[#66645F] leading-relaxed whitespace-pre-wrap">
+            <div className="pl-4 text-[#AAA7B2] leading-relaxed whitespace-pre-wrap font-mono text-[11px] sm:text-xs">
               {item.output}
             </div>
           </div>
@@ -120,12 +120,12 @@ export default function HeroTerminal({ terminalData }) {
 
         {/* User Interactive History */}
         {customHistory.map((item, idx) => (
-          <div key={`hist-${idx}`} className="space-y-1 border-t border-[#F0EEE8] pt-2">
-            <div className="flex items-center gap-2 text-[#304FFE] font-semibold">
-              <span className="text-[#66645F] select-none">$</span>
-              <span>{item.cmd}</span>
+          <div key={`hist-${idx}`} className="space-y-1 border-t border-white/[0.05] pt-2">
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="text-[#9B5CFF] select-none">developer@portfolio:~$</span>
+              <span className="text-[#F5F4F8]">{item.cmd}</span>
             </div>
-            <div className="pl-4 text-[#171717] leading-relaxed whitespace-pre-wrap bg-[#F7F5F0] p-2 rounded border border-[#E7E4DC]">
+            <div className="pl-4 text-[#B994FF] leading-relaxed whitespace-pre-wrap bg-[#121218] p-2.5 rounded-lg border border-white/[0.06] font-mono text-[11px] sm:text-xs">
               {item.output}
             </div>
           </div>
@@ -133,13 +133,13 @@ export default function HeroTerminal({ terminalData }) {
       </div>
 
       {/* Quick Interactive Command Suggestion Chips */}
-      <div className="px-4 py-2 bg-[#F7F5F0] border-t border-[#D8D5CD] flex flex-wrap gap-1.5 items-center">
-        <span className="text-[10px] text-[#66645F] uppercase tracking-wider mr-1">Quick:</span>
-        {['stack', 'dsa', 'web3d', 'projects', 'c++', 'clear'].map((cmd) => (
+      <div className="px-4 py-2 bg-[#0E0E14] border-t border-white/[0.06] flex flex-wrap gap-1.5 items-center">
+        <span className="text-[10px] text-[#706D79] uppercase tracking-wider mr-1">Quick:</span>
+        {['whoami', 'stack', 'dsa', 'web3d', 'projects', 'c++', 'clear'].map((cmd) => (
           <button
             key={cmd}
             onClick={() => handleRunCommand(cmd)}
-            className="px-2 py-0.5 rounded bg-white hover:bg-[#304FFE] hover:text-white border border-[#D8D5CD] text-[10px] text-[#66645F] transition-colors"
+            className="px-2 py-0.5 rounded bg-[#161620] hover:bg-[#9B5CFF] hover:text-white border border-white/[0.06] text-[10px] text-[#AAA7B2] transition-colors"
           >
             {cmd}
           </button>
@@ -147,20 +147,20 @@ export default function HeroTerminal({ terminalData }) {
       </div>
 
       {/* Interactive Command Input Line */}
-      <div className="p-3 bg-white border-t border-[#D8D5CD] flex items-center gap-2">
-        <span className="text-[#304FFE] font-bold select-none">$</span>
+      <div className="p-3 bg-[#121218] border-t border-white/[0.08] flex items-center gap-2">
+        <span className="text-[#9B5CFF] font-bold select-none text-xs">$</span>
         <input
           type="text"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Nhập 'help' hoặc click nút lệnh trên..."
-          className="flex-1 bg-transparent border-none outline-none text-[#171717] placeholder:text-[#8E8B83] text-xs font-mono"
+          className="flex-1 bg-transparent border-none outline-none text-[#F5F4F8] placeholder:text-[#706D79] text-xs font-mono"
         />
         <button
           onClick={() => inputVal.trim() && handleRunCommand(inputVal)}
           disabled={!inputVal.trim()}
-          className="p-1.5 rounded bg-[#171717] disabled:bg-[#D8D5CD] text-white hover:bg-[#304FFE] transition-colors disabled:cursor-not-allowed"
+          className="p-1.5 rounded-lg bg-[#9B5CFF] disabled:bg-[#1A1A22] text-white hover:bg-[#B994FF] transition-colors disabled:cursor-not-allowed shadow-glow-purple"
           title="Thực thi lệnh"
         >
           <Play className="w-3 h-3" />
